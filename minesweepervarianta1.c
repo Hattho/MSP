@@ -5,7 +5,7 @@
 #include <ctype.h>
 
 #define BOARDSIZE 13
-#define NO_MINES 4
+#define NO_MINES 9
 #define TRUE 1
 #define FALSE 0
 
@@ -16,7 +16,8 @@ void build_mines_board(){
 
     int iterator1;
     int iterator2;
-    int i,j;
+    int iterator3;
+    int iterator4;
     int mine_row;
     int mine_col;
 
@@ -29,13 +30,13 @@ void build_mines_board(){
                 mines_board[iterator1][iterator2]=' ';
             }
             else if( iterator1==0 || iterator1==BOARDSIZE-1 ){
-                for(j = 2;j <= BOARDSIZE-3; j++){
-                    mines_board[iterator1][j]=(char)(((int)'0')+j-1);
+                for(iterator4 = 2;iterator4 <= BOARDSIZE-3; iterator4++){
+                    mines_board[iterator1][iterator4]=(char)(((int)'0')+iterator4-1);
                 }
             }
             else if( iterator2==0 || iterator2==BOARDSIZE-1 ){
-                for(i = 2;i <= BOARDSIZE-3; i++){
-                    mines_board[i][iterator2]=(char)(((int)'0')+i-1);
+                for(iterator3 = 2;iterator3 <= BOARDSIZE-3; iterator3++){
+                    mines_board[iterator3][iterator2]=(char)(((int)'0')+iterator3-1);
                 }
             }
             else{
@@ -91,7 +92,8 @@ void print_mines_board(){
 void build_player_board(){
     int iterator1;
     int iterator2;
-    int i,j;
+    int iterator3;
+    int iterator4;
 
     for(iterator1=0;iterator1<BOARDSIZE;iterator1++){
         for(iterator2=0; iterator2<BOARDSIZE ; iterator2++){
@@ -102,13 +104,13 @@ void build_player_board(){
                     player_board[iterator1][iterator2]=' ';
             }
             else if( iterator1==0 || iterator1==BOARDSIZE-1 ){
-                for(j = 2;j <= BOARDSIZE-3; j++){
-                    player_board[iterator1][j]=(char)(((int)'0')+j-1);
+                for(iterator4 = 2;iterator4 <= BOARDSIZE-3; iterator4++){
+                    player_board[iterator1][iterator4]=(char)(((int)'0')+iterator4-1);
                 }
             }
             else if( iterator2==0 || iterator2==BOARDSIZE-1 ){
-                for(i = 2;i <= BOARDSIZE-3; i++){
-                    player_board[i][iterator2]=(char)(((int)'0')+i-1);
+                for(iterator3 = 2;iterator3 <= BOARDSIZE-3; iterator3++){
+                    player_board[iterator3][iterator2]=(char)(((int)'0')+iterator3-1);
                 }
             }
             else{
@@ -140,6 +142,8 @@ void reveal_spaces (int row, int column){
         player_board[row][column]=mines_board[row][column];
 
         if(mines_board[row][column] == '0'){
+            mines_board[row][column]= '~';
+            player_board[row][column]='~';
             reveal_spaces(row+1,column);
             reveal_spaces(row-1,column);
             reveal_spaces(row,column+1);
@@ -153,31 +157,7 @@ void reveal_spaces (int row, int column){
 
 }
 
-int find_nearby_mines(int row, int column){
-    int mines = 0;
 
-
-    if(mines_board[row - 1][column] == '*')
-        mines++;
-    if(mines_board[row + 1][column] == '*')
-        mines++;
-    if(mines_board[row][column - 1] == '*')
-        mines++;
-    if(mines_board[row][column + 1] == '*')
-        mines++;
-
-
-    if(mines_board[row - 1][column + 1] == '*')
-        mines++;
-    if(mines_board[row - 1][column - 1] == '*')
-        mines++;
-    if(mines_board[row + 1][column + 1] == '*')
-        mines++;
-    if(mines_board[row + 1][column - 1] == '*')
-        mines++;
-
-    return mines;
-}
 
 void loss(){
     char answer;
@@ -231,7 +211,7 @@ void start_game (){
 
  int row, column;
 
-    // Build both game boards
+    // Build both mines and player boards
     build_mines_board();
     build_player_board();
     print_player_board();
@@ -241,18 +221,20 @@ void start_game (){
         printf("Choose your doom:\n");
         printf("Row: ");
         scanf("%d", &row);
+        row++;
         printf("Column: ");
         scanf("%d", &column);
+        column++;
         } while(row < 2 || row > BOARDSIZE - 3 || column < 2 || column > BOARDSIZE - 3);
 
 
-        if(mines_board[row+1][column+1] == '*'){
+        if(mines_board[row][column] == '*'){
             printf("We told you that you'll die :)\n");
             print_mines_board();
             loss();
         }
         else{
-            reveal_spaces(row+1, column+1);
+            reveal_spaces(row, column);
         }
         //system("cls");
         print_player_board();
