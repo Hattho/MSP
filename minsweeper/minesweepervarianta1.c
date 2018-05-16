@@ -12,6 +12,7 @@
 char mines_board[BOARDSIZE][BOARDSIZE];
 char player_board[BOARDSIZE][BOARDSIZE];
 
+
 void build_mines_board(){
 
     int iterator1;
@@ -158,6 +159,14 @@ void reveal_spaces (int row, int column){
 }
 
 
+void flags (int row, int column){\
+
+
+
+
+
+}
+
 
 void loss(){
     char answer;
@@ -216,27 +225,44 @@ void start_game (){
     build_player_board();
     print_player_board();
 
+    printf("Welcome to our minesweeper. Hope you will have a great stay :)\n");
+    printf("Legend:\n M -- Flagged mine \n ~ -- Clear space(without any bombs around it) \n - -- Spaces not yet cleared \n 1-8 -- Number of mines around the tile\n");
+
+    char decision;
     for(;;){
+
+
         do {
-        printf("Choose your doom:\n");
-        printf("Row: ");
-        scanf("%d", &row);
-        row++;
-        printf("Column: ");
-        scanf("%d", &column);
-        column++;
+
+            printf("Do you want to clear a space or flag a bomb?: 0--clear / 1-- flag a mine\n");
+            printf("Decision: ");
+            scanf("%d", &decision);
+            printf("Row: ");
+            scanf("%d", &row);
+            row++;
+            printf("Column: ");
+            scanf("%d", &column);
+            column++;
+            printf("\n");
         } while(row < 2 || row > BOARDSIZE - 3 || column < 2 || column > BOARDSIZE - 3);
 
 
-        if(mines_board[row][column] == '*'){
-            printf("We told you that you'll die :)\n");
-            print_mines_board();
-            loss();
+        if( !decision ){
+            if(mines_board[row][column] == '*'){
+                printf("We told you that you'll die :)\n");
+                print_mines_board();
+                loss();
+            }
+            else{
+                reveal_spaces(row, column);
+            }
         }
-        else{
-            reveal_spaces(row, column);
+        else {
+            if ( decision ) {
+                player_board[row][column] = 'M';
+            }
         }
-        //system("cls");
+        system("cls");
         print_player_board();
 
         if(check_win() == TRUE)
@@ -247,10 +273,10 @@ void start_game (){
 
 int main(){
     build_mines_board();
-    print_mines_board();
+
 
     puts("\n");
-    //system("pause");
+    system("pause");
     start_game();
 
     return 0;
