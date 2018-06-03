@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1526490947 source:c:\users\werstef\desktop\projects\msp\minsweeper\minesweepervarianta1.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+
