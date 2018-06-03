@@ -11,6 +11,7 @@
 
 char mines_board[BOARDSIZE][BOARDSIZE];
 char player_board[BOARDSIZE][BOARDSIZE];
+int solver_chance_board[BOARDSIZE][BOARDSIZE];
 
 
 void build_mines_board(){
@@ -122,6 +123,81 @@ void build_player_board(){
 
 }
 
+void build_solver_chance_board(){
+    int iterator1;
+    int iterator2;
+
+    for( iterator1 = 0; iterator1 <= BOARDSIZE  ; iterator1++){
+        for( iterator2 = 0; iterator2 <= BOARDSIZE  ; iterator2++){
+            solver_chance_board[iterator1][iterator2] = 0;
+        }
+    }
+
+}
+
+void print_solver_chance_board() {
+    int iterator1;
+    int iterator2;
+
+    for( iterator1 = 0; iterator1 <= BOARDSIZE  ; iterator1++){
+        for( iterator2 = 0; iterator2 <= BOARDSIZE  ; iterator2++){
+            printf("%d ", solver_chance_board[iterator1][iterator2]);
+        }
+        printf("\n");
+    }
+
+
+}
+
+void look_for_mines(int row, int column){
+
+    int coordinates_row[]={0, 0, 1, -1, -1, -1, 1, 1};
+    int coordinates_column[]={1, -1, 0, 0, -1, 1, -1, 1};
+
+    int hidden_spaces = 0;
+    int mines = 0;
+
+    int iterator1 = 0;
+    int iterator2 = 0;
+
+    int player_board_number = (int)(player_board[row][column] - '0');
+
+    while(iterator1 <= 7){
+        if(player_board[row+coordinates_row[iterator1++]][column+coordinates_column[iterator2]] == '-'){
+            hidden_spaces++;
+        }
+        else if(player_board[row+coordinates_row[iterator1++]][column+coordinates_column[iterator2]] == 'M'){
+            mines++;
+        }
+    }
+    if( (mines == player_board_number) && (hidden_spaces != 0) ){
+        while(iterator1 <= 7){
+            if(player_board[row+coordinates_row[iterator1++]][column+coordinates_column[iterator2]] == '-'){
+                reveal_spaces(row+coordinates_row[iterator1++], column+coordinates_column[iterator2]);
+            }
+        }
+    }
+    else if (hidden_spaces = player_board_number - mines) {
+        if(player_board[row+coordinates_row[iterator1++]][column+coordinates_column[iterator2]] == '-'){
+            player_board[row+coordinates_row[iterator1++]][column+coordinates_column[iterator2]] = 'M';
+        }
+    }
+}
+
+void automatic_flagging(){
+    int iterator1;
+    int iterator2;
+
+    for( iterator1 = 1; iterator1 <= BOARDSIZE -1; iterator1++){
+        for( iterator2 = 1; iterator2 <= BOARDSIZE -1; iterator2++){
+            if( player_board[iterator1][iterator2] >= '1' && player_board[iterator1][iterator2] <= '9'){
+                look_for_mines(iterator1, iterator2);
+            }
+        }
+    }
+
+}
+
 void print_player_board(){
 
     int iterator1, iterator2;
@@ -210,50 +286,43 @@ int check_win(){
 void start_game (){
 
 
- int row, column;
+    int row, column;
+
 
     // Build both mines and player boards
     build_mines_board();
     build_player_board();
+    build_solver_chance_board();
     print_player_board();
 
-    printf("Welcome to our minesweeper. Hope you will have a great stay :)\n");
-    printf("Legend:\n M -- Flagged mine \n ~ -- Clear space(without any bombs around it) \n - -- Spaces not yet cleared \n 1-8 -- Number of mines around the tile\n");
+    printf("Welcome to our minesweeper autosolver!n");
 
+    int first_move = 1;
     char decision;
     for(;;){
 
+        if( first_move ){
+            do {
 
-        do {
-
-            printf("Do you want to clear a space or flag a bomb?: 0--clear / 1-- flag a mine\n");
-            printf("Decision: ");
-            scanf("%d", &decision);
-            printf("Row: ");
-            scanf("%d", &row);
-            row++;
-            printf("Column: ");
-            scanf("%d", &column);
-            column++;
-            printf("\n");
-        } while(row < 2 || row > BOARDSIZE - 3 || column < 2 || column > BOARDSIZE - 3);
+                printf("You make the first more, we'll do the rest :) \n");
+                printf("Row: ");
+                scanf("%d", &row);
+                printf("Column: ");
+                scanf("%d", &column);
+                printf("\n");
+            } while(row < 1 || row > BOARDSIZE - 2 || column < 1 || column > BOARDSIZE - 2);
+        }
 
 
-        if( !decision ){
-            if(mines_board[row][column] == '*'){
-                printf("We told you that you'll die :)\n");
-                print_mines_board();
-                loss();
-            }
-            else{
-                reveal_spaces(row, column);
-            }
+        if( first_move ){
+            reveal_spaces( row, column);
+            //autmoatic_flagging;
         }
         else {
-            if ( decision ) {
-                player_board[row][column] = 'M';
-            }
+
         }
+
+        first_move = 0;
         system("cls");
         print_player_board();
 
@@ -261,6 +330,7 @@ void start_game (){
             win();
 
     }
+
 }
 
 int main(){
