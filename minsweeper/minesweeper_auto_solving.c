@@ -129,7 +129,7 @@ void build_solver_chance_board(){
 
     for( iterator1 = 0; iterator1 <= BOARDSIZE  ; iterator1++){
         for( iterator2 = 0; iterator2 <= BOARDSIZE  ; iterator2++){
-            solver_chance_board[iterator1][iterator2] = 0;
+            solver_chance_board[iterator1][iterator2] = 60;
         }
     }
 
@@ -163,23 +163,33 @@ void look_for_mines(int row, int column){
     int player_board_number = (int)(player_board[row][column] - '0');
 
     while(iterator1 <= 7){
-        if(player_board[row+coordinates_row[iterator1++]][column+coordinates_column[iterator2]] == '-'){
+        if(player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] == '-'){
             hidden_spaces++;
         }
-        else if(player_board[row+coordinates_row[iterator1++]][column+coordinates_column[iterator2]] == 'M'){
+        else if(player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] == 'M'){
             mines++;
         }
+        iterator1++;
+        iterator2++;
     }
+    iterator1 = 0;
+    iterator2 = 0;
     if( (mines == player_board_number) && (hidden_spaces != 0) ){
         while(iterator1 <= 7){
-            if(player_board[row+coordinates_row[iterator1++]][column+coordinates_column[iterator2]] == '-'){
-                reveal_spaces(row+coordinates_row[iterator1++], column+coordinates_column[iterator2]);
+            if(player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] == '-'){
+                reveal_spaces(row+coordinates_row[iterator1], column+coordinates_column[iterator2]);
             }
+            iterator1++;
+            iterator2++;
         }
     }
     else if (hidden_spaces = player_board_number - mines) {
-        if(player_board[row+coordinates_row[iterator1++]][column+coordinates_column[iterator2]] == '-'){
-            player_board[row+coordinates_row[iterator1++]][column+coordinates_column[iterator2]] = 'M';
+        while(iterator1 <= 7){
+            if(player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] == '-'){
+                player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] = 'M';
+            }
+            iterator1++;
+            iterator2++;
         }
     }
 }
@@ -198,6 +208,63 @@ void automatic_flagging(){
 
 }
 
+void autmatic_chance_placer(){
+    int iterator1;
+    int iterator2;
+
+    for( iterator1 = 1; iterator1 <= BOARDSIZE -1; iterator1++){
+        for( iterator2 = 1; iterator2 <= BOARDSIZE -1; iterator2++){
+            if(player_board[iterator1][iterator2] == '-'){
+                    place_chance(iterator1, iterator2);
+            }
+        }
+    }
+
+}
+
+void place_chance(int row, int column){
+
+    solver_chance_board[row][column] = 0;
+
+    int coordinates_row[]={0, 0, 1, -1, -1, -1, 1, 1};
+    int coordinates_column[]={1, -1, 0, 0, -1, 1, -1, 1};
+
+    int iterator1 = 0;
+    int iterator2 = 0;
+
+    while(iterator1 <= 7){
+        if( player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] >= '1'
+           && player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] <= '9'){
+            solver_chance_board[row][column] += (int)(player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] - '0' );
+        }
+        iterator1++;
+        iterator2++;
+    }
+
+}
+
+void automatic_decision_taker(){
+    int iterator1;
+    int iterator2;
+
+    int iterator1_minimum_chance = 0;
+    int iterator2_minimum_chance = 0;
+    int minimum_chance_recorded = 55;
+
+    for( iterator1 = 1; iterator1 <= BOARDSIZE -1; iterator1++){
+        for( iterator2 = 1; iterator2 <= BOARDSIZE -1; iterator2++){
+            if(player_board[iterator1][iterator2] == '-' && solver_chance_board[iterator1][iterator2] < minimum_chance_recorded){
+                 iterator1_minimum_chance = iterator1;
+                 iterator2_minimum_chance = iterator2;
+            }
+        }
+    }
+
+    reveal_spaces(iterator1_minimum_chance, iterator2_minimum_chance);
+
+}
+
+
 void print_player_board(){
 
     int iterator1, iterator2;
@@ -211,6 +278,7 @@ void print_player_board(){
 }
 
 void reveal_spaces (int row, int column){
+
 
         if(mines_board[row][column]==' '){
             return;
@@ -232,9 +300,9 @@ void reveal_spaces (int row, int column){
 
         }
 
+    solver_chance_board[row][column] = 60;
+
 }
-
-
 
 void loss(){
     char answer;
@@ -316,11 +384,11 @@ void start_game (){
 
         if( first_move ){
             reveal_spaces( row, column);
-            //autmoatic_flagging;
         }
-        else {
 
-        }
+        automatic_flagging();
+        autmatic_chance_placer();
+        automatic_decision_taker();
 
         first_move = 0;
         system("cls");
