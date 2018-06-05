@@ -1,0 +1,297 @@
+\section{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minesweeper autosolver/in\+\_\+game\+\_\+functions\+\_\+autosolver.c File Reference}
+\label{in__game__functions__autosolver_8c}\index{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minesweeper autosolver/in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minesweeper autosolver/in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+
+
+C source code containing the body of the functions used during the game itself.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}in\+\_\+game\+\_\+functions\+\_\+autosolver.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{in__game__functions__autosolver_8c_a9f23dc19fb2ebde82333db1a7d765390}} 
+\#define {\bfseries B\+O\+A\+R\+D\+S\+I\+ZE}~18
+\item 
+\mbox{\label{in__game__functions__autosolver_8c_a52b138f797faa255d3b6704af60700ed}} 
+\#define {\bfseries N\+O\+\_\+\+M\+I\+N\+ES}~40
+\item 
+\mbox{\label{in__game__functions__autosolver_8c_aa8cecfc5c5c054d2875c03e77b7be15d}} 
+\#define {\bfseries T\+R\+UE}~1
+\item 
+\mbox{\label{in__game__functions__autosolver_8c_aa93f0eb578d23995850d61f7d61c55c1}} 
+\#define {\bfseries F\+A\+L\+SE}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ reveal\+\_\+spaces} (int row, int column)
+\item 
+void \textbf{ automatic\+\_\+flagging} ()
+\item 
+void \textbf{ look\+\_\+for\+\_\+mines} (int row, int column)
+\item 
+void \textbf{ automatic\+\_\+chance\+\_\+placer} ()
+\item 
+void \textbf{ place\+\_\+chance} (int row, int column)
+\item 
+void \textbf{ automatic\+\_\+decision\+\_\+taker} ()
+\item 
+void \textbf{ loss} ()
+\item 
+void \textbf{ win} ()
+\item 
+int \textbf{ check\+\_\+win} ()
+\item 
+void \textbf{ start\+\_\+game} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{in__game__functions__autosolver_8c_afea4b09e1fc95fb16bc03e47b3eb8d7d}} 
+char {\bfseries mines\+\_\+board} [B\+O\+A\+R\+D\+S\+I\+ZE][B\+O\+A\+R\+D\+S\+I\+ZE]
+\item 
+\mbox{\label{in__game__functions__autosolver_8c_abd806da59229d7e16b4335d901af9810}} 
+char {\bfseries player\+\_\+board} [B\+O\+A\+R\+D\+S\+I\+ZE][B\+O\+A\+R\+D\+S\+I\+ZE]
+\item 
+\mbox{\label{in__game__functions__autosolver_8c_af86da8d1c1c8c32c651872711739646e}} 
+char {\bfseries solver\+\_\+chance\+\_\+board} [B\+O\+A\+R\+D\+S\+I\+ZE][B\+O\+A\+R\+D\+S\+I\+ZE]
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C source code containing the body of the functions used during the game itself. 
+
+\begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\label{in__game__functions__autosolver_8c_ae715e89994b19e8f8c01ff1a382c9f0d}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}!automatic\+\_\+chance\+\_\+placer@{automatic\+\_\+chance\+\_\+placer}}
+\index{automatic\+\_\+chance\+\_\+placer@{automatic\+\_\+chance\+\_\+placer}!in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+\subsubsection{automatic\+\_\+chance\+\_\+placer()}
+{\footnotesize\ttfamily void automatic\+\_\+chance\+\_\+placer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{automatic\+\_\+chance\+\_\+placer()}{p.}{in__game__functions__autosolver_8c_ae715e89994b19e8f8c01ff1a382c9f0d} Function which places a chance for every cell on the board to be a bomb. This function is called after we determine there are no more \char`\"{}sure\char`\"{} bombs and free spaces. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+Every hidden space receives a chance to be a bomb which is calculated in the place\+\_\+chance function 
+
+Definition at line 167 of file in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c.
+
+\mbox{\label{in__game__functions__autosolver_8c_a19ad98100d141711c09880a7f14f3ad4}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}!automatic\+\_\+decision\+\_\+taker@{automatic\+\_\+decision\+\_\+taker}}
+\index{automatic\+\_\+decision\+\_\+taker@{automatic\+\_\+decision\+\_\+taker}!in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+\subsubsection{automatic\+\_\+decision\+\_\+taker()}
+{\footnotesize\ttfamily void automatic\+\_\+decision\+\_\+taker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{automatic\+\_\+decision\+\_\+taker()}{p.}{in__game__functions__autosolver_8c_a19ad98100d141711c09880a7f14f3ad4} Function which runs the entire board of cells and looks for the hidden space with the lowest chance of being a bomb. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+We need to find the coordinates of the lowest chance cell and also reset the value of the minimum chance whenever we find another minimum
+
+We run the entire board and save the coordinates of the new minimum as well as its value
+
+We reveal the space with the lowest chance, praying to God that it is not a bomb. 
+
+Definition at line 236 of file in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c.
+
+\mbox{\label{in__game__functions__autosolver_8c_adeab5d913f4d6cf9d581fe698a9872c8}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}!automatic\+\_\+flagging@{automatic\+\_\+flagging}}
+\index{automatic\+\_\+flagging@{automatic\+\_\+flagging}!in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+\subsubsection{automatic\+\_\+flagging()}
+{\footnotesize\ttfamily void automatic\+\_\+flagging (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{automatic\+\_\+flagging()}{p.}{in__game__functions__autosolver_8c_adeab5d913f4d6cf9d581fe698a9872c8} Function which runs the entire player board matrix looking for numbers and then calls another function which verifies if the number of mines shown by the cell match with the number of hidden spaces next to the cell and marks them as mine or reveals them depending on the case. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+The cells which have a number of mines next to them are sent to a function which verifies if those mines can be pinpointed or not 
+
+Definition at line 79 of file in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c.
+
+\mbox{\label{in__game__functions__autosolver_8c_a52282f0ec91085764dba1ef97329764a}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}!check\+\_\+win@{check\+\_\+win}}
+\index{check\+\_\+win@{check\+\_\+win}!in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+\subsubsection{check\+\_\+win()}
+{\footnotesize\ttfamily int check\+\_\+win (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{check\+\_\+win()}{p.}{in__game__functions__autosolver_8c_a52282f0ec91085764dba1ef97329764a} Function which is called to verify if the player has won the game with the last move he made. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+Verifies if there are any more unmarked bombs and hidden spaces 
+
+Definition at line 319 of file in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c.
+
+\mbox{\label{in__game__functions__autosolver_8c_abd80ae03634a7dcc36a7d484541df54a}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}!look\+\_\+for\+\_\+mines@{look\+\_\+for\+\_\+mines}}
+\index{look\+\_\+for\+\_\+mines@{look\+\_\+for\+\_\+mines}!in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+\subsubsection{look\+\_\+for\+\_\+mines()}
+{\footnotesize\ttfamily void look\+\_\+for\+\_\+mines (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{column }\end{DoxyParamCaption})}
+
+void look\+\_\+for\+\_\+mines (int row, int column) This function takes a cell with a number on it and looks around for hidden spaces and flagged spaces and decides whether the other hidden spaces around it are bombs or not This function is used to determine the hidden spaces that are 100\% bombs or free spaces. 
+\begin{DoxyParams}{Parameters}
+{\em row} & The row where the cell which will be verified is placed \\
+\hline
+{\em column} & The column where the cell which will be verified is placed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+A vector with the coordinates of the 8 cells around the one which is called
+
+We place the number on the player board cell inside an int variable for easier use
+
+The places around the cell are verified to see whether they are hidden spaces or flagged mines
+
+In case of no hidden spaces, the function stops
+
+After we determine the number of adjacent flagged mines and hidden spaces we see if the hidden spaces are free or bombs We use this if statement to decide if the hidden spaces are free
+
+We use this if statement to decide if the hidden spaces are bombs 
+
+Definition at line 105 of file in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c.
+
+\mbox{\label{in__game__functions__autosolver_8c_af387da91bd344626aecfd4ed33b71b9c}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}!loss@{loss}}
+\index{loss@{loss}!in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+\subsubsection{loss()}
+{\footnotesize\ttfamily void loss (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{loss()}{p.}{in__game__functions__autosolver_8c_af387da91bd344626aecfd4ed33b71b9c} Function which is called when the computer steps on a mine and loses the game. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+The function let\textquotesingle{}s you decide whether you want to run the program or not, we suggest you do
+
+Restarts the game in case of a positive answer 
+
+Definition at line 267 of file in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c.
+
+\mbox{\label{in__game__functions__autosolver_8c_acef986fd04b1cf482c627f26e8a75b2d}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}!place\+\_\+chance@{place\+\_\+chance}}
+\index{place\+\_\+chance@{place\+\_\+chance}!in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+\subsubsection{place\+\_\+chance()}
+{\footnotesize\ttfamily void place\+\_\+chance (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{column }\end{DoxyParamCaption})}
+
+void \doxyref{place\+\_\+chance(int row, int column)}{p.}{in__game__functions__autosolver_8c_acef986fd04b1cf482c627f26e8a75b2d} Function which gives every hidden space a chance to be a bomb by adding the values of the cells with numbers on the player board that are next to the hidden space. 
+\begin{DoxyParams}{Parameters}
+{\em row} & The row where the cell which will be given its chance to be a bomb is placed \\
+\hline
+{\em column} & The column where the cell which will be given its chance to be a bomb is placed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+A vector with the coordinates of the 8 cells around the one which is called
+
+We look to see if there are any adjacent cells with the numbers on the player board
+
+If there are cells with numbers next to our cell, we reset its value on the solver chance board
+
+We add the values of the cells next to ours which contain numbers to decide its likelihood of being a bomb. 
+
+Definition at line 191 of file in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c.
+
+\mbox{\label{in__game__functions__autosolver_8c_a3f76ede798262b5bd093631c1b8200ee}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}!reveal\+\_\+spaces@{reveal\+\_\+spaces}}
+\index{reveal\+\_\+spaces@{reveal\+\_\+spaces}!in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+\subsubsection{reveal\+\_\+spaces()}
+{\footnotesize\ttfamily void reveal\+\_\+spaces (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{column }\end{DoxyParamCaption})}
+
+void reveal\+\_\+spaces (int row, int column) Function which reveals the space at the coordinates mentioned as parameters. 
+\begin{DoxyParams}{Parameters}
+{\em row} & The row on which the cell to be revealed is placed \\
+\hline
+{\em column} & The column on which the cell to be revealed is placed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+In case the function runs over a clear space outside of the game board, it stops
+
+In case the function runs over a cell which has 0 mines nearby, it clears all surrounding cells with the same property.
+
+When the cell is revealed, it\textquotesingle{}s number on the solver chance board is reset, but not to 60 as when it is initialised, but to 59, to help with debugging to see if a cell was cleared or not.
+
+The loss trigger if the game hits a mine through the chance method of solving 
+
+Definition at line 33 of file in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c.
+
+\mbox{\label{in__game__functions__autosolver_8c_a671b58f5509a3a9fa692bacccfc32cc9}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}!start\+\_\+game@{start\+\_\+game}}
+\index{start\+\_\+game@{start\+\_\+game}!in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+\subsubsection{start\+\_\+game()}
+{\footnotesize\ttfamily void start\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{start\+\_\+game()}{p.}{in__game__functions__autosolver_8c_a671b58f5509a3a9fa692bacccfc32cc9} Function which starts the game. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+Builds the mines, player and solver chance boards
+
+The program let\textquotesingle{}s the player make the first move
+
+Reveals the space chosen by the player at the first move of the game
+
+Let\textquotesingle{}s the player see the progress of the computer after every step.
+
+First the game verifies if the are any sure mines or free spaces, then the chance method is used
+
+The output screen is cleared and the progress is updated, the step is done
+
+The program checks to see if the game has been won 
+
+Definition at line 341 of file in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c.
+
+\mbox{\label{in__game__functions__autosolver_8c_a8ee55ac8993fb3160edf3668cec2fba4}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}!win@{win}}
+\index{win@{win}!in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c@{in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c}}
+\subsubsection{win()}
+{\footnotesize\ttfamily void win (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{win()}{p.}{in__game__functions__autosolver_8c_a8ee55ac8993fb3160edf3668cec2fba4} Function which is called when the computer clears all the hidden spaces and wins the game. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+The function let\textquotesingle{}s you decide whether you want to run the program or not, we suggest you do
+
+Restarts the game in case of a positive answer 
+
+Definition at line 294 of file in\+\_\+game\+\_\+functions\+\_\+autosolver.\+c.
+

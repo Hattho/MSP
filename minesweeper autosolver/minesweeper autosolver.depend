@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1528207294 source:c:\users\werstef\desktop\projects\msp\minesweeper autosolver\pre_game_autosolver_boards.c
+	<stdlib.h>
+	<time.h>
+	"pre_game_autosolver_boards.h"
+
+1528205428 c:\users\werstef\desktop\projects\msp\minesweeper autosolver\pre_game_autosolver_boards.h
+
+1528207294 source:c:\users\werstef\desktop\projects\msp\minesweeper autosolver\pre_game_boards.c
+	<stdlib.h>
+	<time.h>
+	"pre_game_boards.h"
+
+1528205428 c:\users\werstef\desktop\projects\msp\minesweeper autosolver\pre_game_boards.h
+
+1528207312 source:c:\users\werstef\desktop\projects\msp\minesweeper autosolver\autosolvermsp.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+	"pre_game_boards.h"
+	"pre_game_autosolver_boards.h"
+	"in_game_functions_autosolver.h"
+
+1528193198 c:\users\werstef\desktop\projects\msp\minesweeper autosolver\in_game_functions_autosolver.h
+

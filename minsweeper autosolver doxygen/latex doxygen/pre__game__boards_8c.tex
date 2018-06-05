@@ -1,0 +1,166 @@
+\section{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minesweeper autosolver/pre\+\_\+game\+\_\+boards.c File Reference}
+\label{pre__game__boards_8c}\index{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minesweeper autosolver/pre\+\_\+game\+\_\+boards.\+c@{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minesweeper autosolver/pre\+\_\+game\+\_\+boards.\+c}}
+
+
+C source code containing the body of the functions that build and print the boards of the game.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}pre\+\_\+game\+\_\+boards.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pre__game__boards_8c_a9f23dc19fb2ebde82333db1a7d765390}} 
+\#define {\bfseries B\+O\+A\+R\+D\+S\+I\+ZE}~18
+\item 
+\mbox{\label{pre__game__boards_8c_a52b138f797faa255d3b6704af60700ed}} 
+\#define {\bfseries N\+O\+\_\+\+M\+I\+N\+ES}~15
+\item 
+\mbox{\label{pre__game__boards_8c_aa8cecfc5c5c054d2875c03e77b7be15d}} 
+\#define {\bfseries T\+R\+UE}~1
+\item 
+\mbox{\label{pre__game__boards_8c_aa93f0eb578d23995850d61f7d61c55c1}} 
+\#define {\bfseries F\+A\+L\+SE}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ build\+\_\+mines\+\_\+board} ()
+\item 
+void \textbf{ increment} (int row, int column)
+\item 
+void \textbf{ print\+\_\+mines\+\_\+board} ()
+\item 
+void \textbf{ build\+\_\+player\+\_\+board} ()
+\item 
+void \textbf{ print\+\_\+player\+\_\+board} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{pre__game__boards_8c_afea4b09e1fc95fb16bc03e47b3eb8d7d}} 
+char {\bfseries mines\+\_\+board} [B\+O\+A\+R\+D\+S\+I\+ZE][B\+O\+A\+R\+D\+S\+I\+ZE]
+\item 
+\mbox{\label{pre__game__boards_8c_abd806da59229d7e16b4335d901af9810}} 
+char {\bfseries player\+\_\+board} [B\+O\+A\+R\+D\+S\+I\+ZE][B\+O\+A\+R\+D\+S\+I\+ZE]
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C source code containing the body of the functions that build and print the boards of the game. 
+
+\begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\label{pre__game__boards_8c_a9ae66e1d936083188873c153a0e96857}} 
+\index{pre\+\_\+game\+\_\+boards.\+c@{pre\+\_\+game\+\_\+boards.\+c}!build\+\_\+mines\+\_\+board@{build\+\_\+mines\+\_\+board}}
+\index{build\+\_\+mines\+\_\+board@{build\+\_\+mines\+\_\+board}!pre\+\_\+game\+\_\+boards.\+c@{pre\+\_\+game\+\_\+boards.\+c}}
+\subsubsection{build\+\_\+mines\+\_\+board()}
+{\footnotesize\ttfamily void build\+\_\+mines\+\_\+board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{build\+\_\+mines\+\_\+board()}{p.}{pre__game__boards_8c_a9ae66e1d936083188873c153a0e96857} Function which builds the mines\textquotesingle{} board. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+The first row, first column, last row and last column are made of blank spaces
+
+The other elements of the matrix are initialised as \textquotesingle{}0\textquotesingle{}
+
+The mines are spawn randomly across the matrix, using rand function
+
+When a mine is placed, the cells adjacent to it are incremented so we know how many mines are next to a cell. 
+
+Definition at line 30 of file pre\+\_\+game\+\_\+boards.\+c.
+
+\mbox{\label{pre__game__boards_8c_a02516e2d5de1eba9e788746e9f78313c}} 
+\index{pre\+\_\+game\+\_\+boards.\+c@{pre\+\_\+game\+\_\+boards.\+c}!build\+\_\+player\+\_\+board@{build\+\_\+player\+\_\+board}}
+\index{build\+\_\+player\+\_\+board@{build\+\_\+player\+\_\+board}!pre\+\_\+game\+\_\+boards.\+c@{pre\+\_\+game\+\_\+boards.\+c}}
+\subsubsection{build\+\_\+player\+\_\+board()}
+{\footnotesize\ttfamily void build\+\_\+player\+\_\+board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{build\+\_\+player\+\_\+board()}{p.}{pre__game__boards_8c_a02516e2d5de1eba9e788746e9f78313c} This function builds the board on which the player takes decisions and plays the game. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+It places a row and column of blank spaces for artistic purposes
+
+In rest, we place \textquotesingle{}-\/\textquotesingle{} as the hidden spaces on the player board 
+
+Definition at line 147 of file pre\+\_\+game\+\_\+boards.\+c.
+
+\mbox{\label{pre__game__boards_8c_a1f4dd01a920b44077e21b0203b71172e}} 
+\index{pre\+\_\+game\+\_\+boards.\+c@{pre\+\_\+game\+\_\+boards.\+c}!increment@{increment}}
+\index{increment@{increment}!pre\+\_\+game\+\_\+boards.\+c@{pre\+\_\+game\+\_\+boards.\+c}}
+\subsubsection{increment()}
+{\footnotesize\ttfamily void increment (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{column }\end{DoxyParamCaption})}
+
+void increment (int row, int column) We use this function to increment the cells next to the one where a mine is placed so we can find out how many mines are adjacent to a cell in the game. 
+\begin{DoxyParams}{Parameters}
+{\em row} & The row on which the cell to be incremented is placed \\
+\hline
+{\em column} & The column on which the cell to be incremented is placed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+
+
+Definition at line 90 of file pre\+\_\+game\+\_\+boards.\+c.
+
+\mbox{\label{pre__game__boards_8c_a60a41b3bd4214c0d0802ed307846f991}} 
+\index{pre\+\_\+game\+\_\+boards.\+c@{pre\+\_\+game\+\_\+boards.\+c}!print\+\_\+mines\+\_\+board@{print\+\_\+mines\+\_\+board}}
+\index{print\+\_\+mines\+\_\+board@{print\+\_\+mines\+\_\+board}!pre\+\_\+game\+\_\+boards.\+c@{pre\+\_\+game\+\_\+boards.\+c}}
+\subsubsection{print\+\_\+mines\+\_\+board()}
+{\footnotesize\ttfamily void print\+\_\+mines\+\_\+board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{print\+\_\+mines\+\_\+board()}{p.}{pre__game__boards_8c_a60a41b3bd4214c0d0802ed307846f991} This function prints the mines board on the screen. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+We also print a line and a row of numbers which represent the coordinates of every position It is made in order to help the player know the exact coordinates of the cell he wants to flag or clear
+
+Here we print the row of coordinates
+
+Here we print the column of coordinates 
+
+Definition at line 106 of file pre\+\_\+game\+\_\+boards.\+c.
+
+\mbox{\label{pre__game__boards_8c_a4081f994d24b561fdebdde12be524836}} 
+\index{pre\+\_\+game\+\_\+boards.\+c@{pre\+\_\+game\+\_\+boards.\+c}!print\+\_\+player\+\_\+board@{print\+\_\+player\+\_\+board}}
+\index{print\+\_\+player\+\_\+board@{print\+\_\+player\+\_\+board}!pre\+\_\+game\+\_\+boards.\+c@{pre\+\_\+game\+\_\+boards.\+c}}
+\subsubsection{print\+\_\+player\+\_\+board()}
+{\footnotesize\ttfamily void print\+\_\+player\+\_\+board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{print\+\_\+player\+\_\+board()}{p.}{pre__game__boards_8c_a4081f994d24b561fdebdde12be524836} This function prints the board on which the player takes decisions and plays the game. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+We also print a line and a row of numbers which represent the coordinates of every position It is made in order to help the player know the exact coordinates of the cell he wants to flag or clear
+
+Here we print the row of coordinates
+
+Here we print the column of coordinates 
+
+Definition at line 177 of file pre\+\_\+game\+\_\+boards.\+c.
+

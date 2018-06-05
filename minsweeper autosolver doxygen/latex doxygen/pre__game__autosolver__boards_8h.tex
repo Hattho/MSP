@@ -1,0 +1,62 @@
+\section{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minesweeper autosolver/pre\+\_\+game\+\_\+autosolver\+\_\+boards.h File Reference}
+\label{pre__game__autosolver__boards_8h}\index{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minesweeper autosolver/pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+h@{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minesweeper autosolver/pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+h}}
+
+
+C library containing the header of the functions used to build and print the special chance board.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ build\+\_\+solver\+\_\+chance\+\_\+board} ()
+\item 
+void \textbf{ print\+\_\+solver\+\_\+chance\+\_\+board} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C library containing the header of the functions used to build and print the special chance board. 
+
+\begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\label{pre__game__autosolver__boards_8h_a61aa826963fb8462558e226537c72f45}} 
+\index{pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+h@{pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+h}!build\+\_\+solver\+\_\+chance\+\_\+board@{build\+\_\+solver\+\_\+chance\+\_\+board}}
+\index{build\+\_\+solver\+\_\+chance\+\_\+board@{build\+\_\+solver\+\_\+chance\+\_\+board}!pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+h@{pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+h}}
+\subsubsection{build\+\_\+solver\+\_\+chance\+\_\+board()}
+{\footnotesize\ttfamily void build\+\_\+solver\+\_\+chance\+\_\+board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{build\+\_\+solver\+\_\+chance\+\_\+board()}{p.}{pre__game__autosolver__boards_8c_a61aa826963fb8462558e226537c72f45} Function which builds the board that will hold the chances for every cell to be a bomb \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+The line and column which is made of free spaces \textquotesingle{} \textquotesingle{} on the player board is replaced with -\/1 on the (int)solver\+\_\+chance\+\_\+board
+
+The rest of the elements are given the value 60, a value bigger than the sum that can be achieved by adding the adjacent player board cells\textquotesingle{} values 
+
+Definition at line 30 of file pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+c.
+
+\mbox{\label{pre__game__autosolver__boards_8h_ac43241a41966d335671dc909692dedaa}} 
+\index{pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+h@{pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+h}!print\+\_\+solver\+\_\+chance\+\_\+board@{print\+\_\+solver\+\_\+chance\+\_\+board}}
+\index{print\+\_\+solver\+\_\+chance\+\_\+board@{print\+\_\+solver\+\_\+chance\+\_\+board}!pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+h@{pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+h}}
+\subsubsection{print\+\_\+solver\+\_\+chance\+\_\+board()}
+{\footnotesize\ttfamily void print\+\_\+solver\+\_\+chance\+\_\+board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{print\+\_\+solver\+\_\+chance\+\_\+board()}{p.}{pre__game__autosolver__boards_8c_ac43241a41966d335671dc909692dedaa} Function which prints the solver chance board \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+
+
+Definition at line 61 of file pre\+\_\+game\+\_\+autosolver\+\_\+boards.\+c.
+

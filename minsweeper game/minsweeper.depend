@@ -1,0 +1,64 @@
+# depslib dependency file v1.0
+1526490947 source:c:\users\werstef\desktop\projects\msp\minsweeper\minesweepervarianta1.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+
+1528194401 source:c:\users\werstef\desktop\projects\msp\minsweeper\sources\joc.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+	"pre_game_boards.h"
+	"in_game_functions_player.h"
+
+1528193389 c:\users\werstef\desktop\projects\msp\minsweeper\headers\pre_game_boards.h
+
+1528194316 c:\users\werstef\desktop\projects\msp\minsweeper\headers\in_game_functions_player.h
+
+1528193389 c:\users\werstef\desktop\projects\msp\minsweeper\sources\pre_game_boards.h
+
+1528194316 c:\users\werstef\desktop\projects\msp\minsweeper\sources\in_game_functions_player.h
+
+1528196950 source:c:\users\werstef\desktop\projects\msp\minsweeper\sources\minwsweeper_game.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+	"pre_game_boards.h"
+	"in_game_functions_player.h"
+
+1528201250 source:c:\users\werstef\desktop\projects\msp\minsweeper\sources\in_game_functions_player.c
+	<stdio.h>
+	<stdlib.h>
+	"in_game_functions_player.h"
+	"pre_game_boards.h"
+
+1528206524 source:c:\users\werstef\desktop\projects\msp\minsweeper game\in_game_functions_player.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+	"in_game_functions_player.h"
+	"pre_game_boards.h"
+
+1528194316 c:\users\werstef\desktop\projects\msp\minsweeper game\in_game_functions_player.h
+
+1528205428 c:\users\werstef\desktop\projects\msp\minsweeper game\pre_game_boards.h
+
+1528206474 source:c:\users\werstef\desktop\projects\msp\minsweeper game\pre_game_boards.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+	"pre_game_boards.h"
+
+1528206475 source:c:\users\werstef\desktop\projects\msp\minsweeper game\minwsweeper_game.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+	"pre_game_boards.h"
+	"in_game_functions_player.h"
+

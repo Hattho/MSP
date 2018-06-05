@@ -1,0 +1,171 @@
+\section{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minsweeper game/in\+\_\+game\+\_\+functions\+\_\+player.c File Reference}
+\label{in__game__functions__player_8c}\index{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minsweeper game/in\+\_\+game\+\_\+functions\+\_\+player.\+c@{C\+:/\+Users/\+Werstef/\+Desktop/\+Projects/\+M\+S\+P/minsweeper game/in\+\_\+game\+\_\+functions\+\_\+player.\+c}}
+
+
+C source code containing the functions used during the game itself.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}in\+\_\+game\+\_\+functions\+\_\+player.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pre\+\_\+game\+\_\+boards.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{in__game__functions__player_8c_a9f23dc19fb2ebde82333db1a7d765390}} 
+\#define {\bfseries B\+O\+A\+R\+D\+S\+I\+ZE}~18
+\item 
+\mbox{\label{in__game__functions__player_8c_a52b138f797faa255d3b6704af60700ed}} 
+\#define {\bfseries N\+O\+\_\+\+M\+I\+N\+ES}~15
+\item 
+\mbox{\label{in__game__functions__player_8c_aa8cecfc5c5c054d2875c03e77b7be15d}} 
+\#define {\bfseries T\+R\+UE}~1
+\item 
+\mbox{\label{in__game__functions__player_8c_aa93f0eb578d23995850d61f7d61c55c1}} 
+\#define {\bfseries F\+A\+L\+SE}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ reveal\+\_\+spaces} (int row, int column)
+\item 
+void \textbf{ loss} ()
+\item 
+void \textbf{ win} ()
+\item 
+int \textbf{ check\+\_\+win} ()
+\item 
+void \textbf{ start\+\_\+game} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{in__game__functions__player_8c_afea4b09e1fc95fb16bc03e47b3eb8d7d}} 
+char {\bfseries mines\+\_\+board} [B\+O\+A\+R\+D\+S\+I\+ZE][B\+O\+A\+R\+D\+S\+I\+ZE]
+\item 
+\mbox{\label{in__game__functions__player_8c_abd806da59229d7e16b4335d901af9810}} 
+char {\bfseries player\+\_\+board} [B\+O\+A\+R\+D\+S\+I\+ZE][B\+O\+A\+R\+D\+S\+I\+ZE]
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C source code containing the functions used during the game itself. 
+
+\begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\label{in__game__functions__player_8c_a52282f0ec91085764dba1ef97329764a}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+player.\+c@{in\+\_\+game\+\_\+functions\+\_\+player.\+c}!check\+\_\+win@{check\+\_\+win}}
+\index{check\+\_\+win@{check\+\_\+win}!in\+\_\+game\+\_\+functions\+\_\+player.\+c@{in\+\_\+game\+\_\+functions\+\_\+player.\+c}}
+\subsubsection{check\+\_\+win()}
+{\footnotesize\ttfamily int check\+\_\+win (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{check\+\_\+win()}{p.}{in__game__functions__player_8c_a52282f0ec91085764dba1ef97329764a} Function which is called to verify if the player has won the game with the last move he made. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+Verifies if there are any more unmarked bombs and hidden spaces 
+
+Definition at line 113 of file in\+\_\+game\+\_\+functions\+\_\+player.\+c.
+
+\mbox{\label{in__game__functions__player_8c_af387da91bd344626aecfd4ed33b71b9c}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+player.\+c@{in\+\_\+game\+\_\+functions\+\_\+player.\+c}!loss@{loss}}
+\index{loss@{loss}!in\+\_\+game\+\_\+functions\+\_\+player.\+c@{in\+\_\+game\+\_\+functions\+\_\+player.\+c}}
+\subsubsection{loss()}
+{\footnotesize\ttfamily void loss (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{loss()}{p.}{in__game__functions__player_8c_af387da91bd344626aecfd4ed33b71b9c} Function which is called when the player steps on a mine and loses the game. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+The function let\textquotesingle{}s you decide whether you want to play again or not, we suggest you do
+
+Restarts the game in case of a positive answer 
+
+Definition at line 66 of file in\+\_\+game\+\_\+functions\+\_\+player.\+c.
+
+\mbox{\label{in__game__functions__player_8c_a3f76ede798262b5bd093631c1b8200ee}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+player.\+c@{in\+\_\+game\+\_\+functions\+\_\+player.\+c}!reveal\+\_\+spaces@{reveal\+\_\+spaces}}
+\index{reveal\+\_\+spaces@{reveal\+\_\+spaces}!in\+\_\+game\+\_\+functions\+\_\+player.\+c@{in\+\_\+game\+\_\+functions\+\_\+player.\+c}}
+\subsubsection{reveal\+\_\+spaces()}
+{\footnotesize\ttfamily void reveal\+\_\+spaces (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{column }\end{DoxyParamCaption})}
+
+void reveal\+\_\+spaces (int row, int column) Function which reveals the space at the coordinates mentioned as parameters. 
+\begin{DoxyParams}{Parameters}
+{\em row} & The row on which the cell to be revealed is placed \\
+\hline
+{\em column} & The column on which the cell to be revealed is placed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+In case the function runs over a clear space outrside of the game board, it stops
+
+In case the function runs over a cell which has 0 mines nearby, it clears all surrounding cells with the same property. 
+
+Definition at line 33 of file in\+\_\+game\+\_\+functions\+\_\+player.\+c.
+
+\mbox{\label{in__game__functions__player_8c_a671b58f5509a3a9fa692bacccfc32cc9}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+player.\+c@{in\+\_\+game\+\_\+functions\+\_\+player.\+c}!start\+\_\+game@{start\+\_\+game}}
+\index{start\+\_\+game@{start\+\_\+game}!in\+\_\+game\+\_\+functions\+\_\+player.\+c@{in\+\_\+game\+\_\+functions\+\_\+player.\+c}}
+\subsubsection{start\+\_\+game()}
+{\footnotesize\ttfamily void start\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{start\+\_\+game()}{p.}{in__game__functions__player_8c_a671b58f5509a3a9fa692bacccfc32cc9} Function which starts the game. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+The mines and player boards are made
+
+The legend of the game is shown to familiarize the player
+
+Player decides whether to clear a cell or flag it as a mine
+
+If the cell cleared is a mine, the game is lost
+
+The cell chosen is cleared
+
+The cell chosen is flagged as a mine
+
+The output screen is cleared and the progress is updated, waiting for a new move from the player
+
+The program checks to see if the player has won the game 
+
+Definition at line 135 of file in\+\_\+game\+\_\+functions\+\_\+player.\+c.
+
+\mbox{\label{in__game__functions__player_8c_a8ee55ac8993fb3160edf3668cec2fba4}} 
+\index{in\+\_\+game\+\_\+functions\+\_\+player.\+c@{in\+\_\+game\+\_\+functions\+\_\+player.\+c}!win@{win}}
+\index{win@{win}!in\+\_\+game\+\_\+functions\+\_\+player.\+c@{in\+\_\+game\+\_\+functions\+\_\+player.\+c}}
+\subsubsection{win()}
+{\footnotesize\ttfamily void win (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+void \doxyref{win()}{p.}{in__game__functions__player_8c_a8ee55ac8993fb3160edf3668cec2fba4} Function which is called when the player clears all the hidden spaces and wins the game. \begin{DoxyAuthor}{Author}
+Efrem Stefan and Hagiu Teodora 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6/05/2018 
+\end{DoxyDate}
+The function let\textquotesingle{}s you decide whether you want to play again or not, we suggest you do
+
+Restarts the game in case of a positive answer 
+
+Definition at line 89 of file in\+\_\+game\+\_\+functions\+\_\+player.\+c.
+
