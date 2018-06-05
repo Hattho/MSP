@@ -3,15 +3,14 @@
 #include <time.h>
 #include <ctype.h>
 
-#define BOARDSIZE 12
-#define NO_MINES 9
+#define BOARDSIZE 18
 #define TRUE 1
 #define FALSE 0
 
 char mines_board[BOARDSIZE][BOARDSIZE];
 char player_board[BOARDSIZE][BOARDSIZE];
 int solver_chance_board[BOARDSIZE][BOARDSIZE];
-
+int NO_MINES;
 
 void build_mines_board(){
 
@@ -221,7 +220,6 @@ void automatic_flagging(){
         }
     }
 
-    print_player_board();
 
 }
 
@@ -241,13 +239,27 @@ void automatic_chance_placer(){
 
 void place_chance(int row, int column){
 
-    solver_chance_board[row][column] = 0;
-
     int    coordinates_row[]={0, 0, 1, -1, -1, -1, 1, 1};
     int coordinates_column[]={1, -1, 0, 0, -1, 1, -1, 1};
 
     int iterator1 = 0;
     int iterator2 = 0;
+    int confirm = 0;
+
+    while(iterator1 <= 7){
+        if( player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] >= '1'
+           && player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] <= '9'){
+               confirm = 1;
+               break;
+
+        }
+        iterator1++;
+        iterator2++;
+    }
+
+    if( confirm ){
+        solver_chance_board[row][column] = 0;
+    }
 
     while(iterator1 <= 7){
         if( player_board[row+coordinates_row[iterator1]][column+coordinates_column[iterator2]] >= '1'
@@ -257,6 +269,7 @@ void place_chance(int row, int column){
         iterator1++;
         iterator2++;
     }
+
 
 }
 
@@ -273,14 +286,12 @@ void automatic_decision_taker(){
             if(player_board[iterator1][iterator2] == '-' && solver_chance_board[iterator1][iterator2] < minimum_chance_recorded){
                  iterator1_minimum_chance = iterator1;
                  iterator2_minimum_chance = iterator2;
+                 minimum_chance_recorded=solver_chance_board[iterator1][iterator2];
             }
         }
     }
 
     reveal_spaces(iterator1_minimum_chance, iterator2_minimum_chance);
-
-    print_player_board();
-    print_solver_chance_board();
 
 }
 
@@ -406,7 +417,8 @@ int check_win(){
 
 void start_game (){
 
-
+    printf("%d", NO_MINES);
+    printf("\n");
     int row, column;
 
 
@@ -419,8 +431,6 @@ void start_game (){
     printf("Welcome to our minesweeper autosolver!\n");
 
     int first_move = 1;
-
-    print_mines_board();
 
     for(;;){
 
@@ -444,23 +454,23 @@ void start_game (){
 
         int x;
         scanf("%d", &x);
+
         if(x==1){
-        automatic_flagging();
-        automatic_chance_placer();
-        automatic_decision_taker();
 
-        //system("cls");
+            automatic_flagging();
+            automatic_chance_placer();
+            automatic_decision_taker();
 
-        print_player_board();
+            //system("cls");
 
-        printf("\n");
-        //print_solver_chance_board();
-        printf("\n");
+            print_player_board();
+
+            printf("\n");
+        }
+
 
         if(check_win() == TRUE){
             win();
-        }
-
         }
 
     }
@@ -468,8 +478,8 @@ void start_game (){
 }
 
 int main(){
-    build_mines_board();
 
+    NO_MINES =floor(15*((BOARDSIZE-2)*(BOARDSIZE-2))/100);
 
     puts("\n");
     system("pause");
